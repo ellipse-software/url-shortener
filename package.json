@@ -1,0 +1,28 @@
+{
+  "name": "url-shortner",
+  "module": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/ejs": "^3.1.5",
+    "prisma": "^5.21.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "dev": "tsx --watch src/index.ts",
+    "prisma": "bunx prisma"
+  },
+  "dependencies": {
+    "@fastify/static": "^8.0.2",
+    "@fastify/view": "^10.0.1",
+    "@prisma/client": "^5.21.1",
+    "ejs": "^3.1.10",
+    "fastify": "^5.0.0",
+    "fastify-cors": "^6.1.0",
+    "sqlite": "^5.1.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.1"
+  }
+}
