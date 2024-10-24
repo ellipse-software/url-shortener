@@ -2,6 +2,10 @@ import { create } from "@/lib/create";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { type NextRequest } from "next/server";
 
+export async function GET() {
+  return Response.redirect("https://ellipse.software");
+}
+
 export async function POST(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const query = searchParams.get("link");
