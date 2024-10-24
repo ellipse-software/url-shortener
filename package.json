@@ -1,28 +1,32 @@
 {
-  "name": "url-shortner",
-  "module": "src/index.ts",
-  "type": "module",
-  "devDependencies": {
-    "@types/bun": "latest",
-    "@types/ejs": "^3.1.5",
-    "prisma": "^5.21.1"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
+  "name": "my-next-app",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "tsx --watch src/index.ts",
-    "prisma": "bunx prisma"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "deploy": "cloudflare && wrangler deploy",
+    "preview": "cloudflare && wrangler dev",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
-    "@fastify/static": "^8.0.2",
-    "@fastify/view": "^10.0.1",
-    "@prisma/client": "^5.21.1",
-    "ejs": "^3.1.10",
-    "fastify": "^5.0.0",
-    "fastify-cors": "^6.1.0",
-    "sqlite": "^5.1.1",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.19.1"
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241022.0",
+    "@opennextjs/cloudflare": "^0.2.1",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5",
+    "wrangler": "^3.83.0"
   }
 }
