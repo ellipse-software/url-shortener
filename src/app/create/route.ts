@@ -1,6 +1,8 @@
 import { create } from "@/lib/create";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { type NextRequest } from "next/server";
+import { formSchema } from "@/schema/createSchema";
+import { z } from "zod";
 
 export async function GET() {
   return Response.redirect("https://ellipse.software");
@@ -13,11 +15,7 @@ export async function POST(request: NextRequest) {
   if (!query) {
     return Response.json({ error: "missing link" }, { status: 400 });
   }
-  if (
-    !query.match(
-      /^[a-zA-Z]+:\/\/[a-zA-Z0-9\-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?\/?$/
-    )
-  ) {
+  if (!z.string().url().safeParse(query).success) {
     return Response.json({ error: "invalid link" }, { status: 400 });
   }
 

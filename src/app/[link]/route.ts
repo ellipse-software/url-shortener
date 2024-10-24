@@ -12,7 +12,7 @@ export async function GET(
   const link = await linkKeyValueStore.get(availableParams.link);
 
   if (link === null) {
-    return new Response("not found", { status: 404 });
+    return Response.redirect("https://ellipse.software");
   }
 
   console.log(link);

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { redirect } from "next/navigation";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,5 +15,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  redirect("https://ellipse.software");
+  return (
+    <html lang="en">
+      <body
+        className={
+          "flex flex-col items-center justify-center h-screen text-foreground" +
+          " " +
+          inter.className
+        }
+      >
+        {children}
+        <Toaster richColors position="top-center" />
+      </body>
+    </html>
+  );
 }
