@@ -15,3 +15,7 @@ assets = { directory = ".worker-next/assets", binding = "ASSETS" }
 binding = "LINKS"
 id = "a8074402f01c4314abc07f894696ce84"
 preview_id = "1f3b36ebb50347ea8c2f10be55abc742"
+
+[observability]
+enabled = true
+head_sampling_rate = 1
