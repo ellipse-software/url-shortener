@@ -12,12 +12,11 @@
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
-    "next": "14.2.5",
-    "react": "^18",
-    "react-dom": "^18"
+    "next": "^15.0.1",
+    "react": "^19.0.0-rc-1631855f-20241023",
+    "react-dom": "^19.0.0-rc-1631855f-20241023"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20241022.0",
     "@opennextjs/cloudflare": "^0.2.1",
     "@types/node": "^20",
     "@types/react": "^18",
