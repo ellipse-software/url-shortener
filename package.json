@@ -1,7 +1,10 @@
 {
-  "name": "my-next-app",
+  "name": "url-shortener",
   "version": "0.1.0",
   "private": true,
+  "module": "ESNext",
+  "type": "module",
+  "target": "ESNext",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,9 +15,14 @@
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
-    "next": "^15.0.1",
-    "react": "^19.0.0-rc-1631855f-20241023",
-    "react-dom": "^19.0.0-rc-1631855f-20241023"
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.453.0",
+    "next": "14",
+    "react": "18",
+    "react-dom": "18",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@opennextjs/cloudflare": "^0.2.1",

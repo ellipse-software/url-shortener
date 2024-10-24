@@ -12,5 +12,6 @@ minify = true
 assets = { directory = ".worker-next/assets", binding = "ASSETS" }
 
 [[kv_namespaces]]
-binding = "url_shortener"
-id = "efa7d57ffdc54c758b87d710d1ae20d0"
+binding = "LINKS"
+id = "a8074402f01c4314abc07f894696ce84"
+preview_id = "1f3b36ebb50347ea8c2f10be55abc742"
