@@ -1,0 +1,21 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "url-shortener"
+main = ".worker-next/index.mjs"
+
+compatibility_date = "2024-09-26"
+compatibility_flags = ["nodejs_compat"]
+
+# Minification helps to keep the Worker bundle size down and improve start up time.
+minify = true
+
+# Use the new Workers + Assets to host the static frontend files
+assets = { directory = ".worker-next/assets", binding = "ASSETS" }
+
+[[kv_namespaces]]
+binding = "LINKS"
+id = "a8074402f01c4314abc07f894696ce84"
+preview_id = "1f3b36ebb50347ea8c2f10be55abc742"
+
+[observability]
+enabled = true
+head_sampling_rate = 1
