@@ -16,15 +16,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { formSchema } from "@/schema/createSchema";
-import { useCopyToClipboard } from "@uidotdev/usehooks";
 import { toast } from "sonner";
 import { useState } from "react";
 
 export function CreateForm() {
-  const [copiedText, copyToClipboard] = useCopyToClipboard();
   const [loading, setLoading] = useState(false);
-
-  copiedText;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -52,7 +48,7 @@ export function CreateForm() {
 
       const timeTaken = new Date().getTime() - timeA.getTime();
 
-      copyToClipboard(fullLink);
+      navigator.clipboard.writeText(fullLink);
       form.reset();
 
       toast.success(`Link copied to clipboard in ${timeTaken}ms`, {});
