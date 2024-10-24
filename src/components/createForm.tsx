@@ -87,7 +87,7 @@ export function CreateForm() {
           variant="secondary"
           type="submit"
         >
-          {loading ? "Creating..." : "Create"}
+          {loading ? "Shortening..." : "Shorten"}
         </Button>
       </form>
     </Form>
