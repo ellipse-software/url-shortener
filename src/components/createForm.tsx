@@ -17,10 +17,17 @@ import {
 import { Input } from "@/components/ui/input";
 import { formSchema } from "@/schema/createSchema";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function CreateForm() {
   const [loading, setLoading] = useState(false);
+  const [nav, setNav] = useState<Navigator | null>(null);
+
+  useEffect(() => {
+    if (window.navigator) {
+      setNav(window.navigator);
+    }
+  }, []);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,8 +55,8 @@ export function CreateForm() {
 
       const timeTaken = new Date().getTime() - timeA.getTime();
 
-      navigator.clipboard.writeText(fullLink);
-      form.reset();
+      if (nav) nav.clipboard.writeText(fullLink);
+      form.setValue("link", fullLink);
 
       toast.success(`Link copied to clipboard in ${timeTaken}ms`, {});
     } catch (error) {
