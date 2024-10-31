@@ -1,3 +1,4 @@
+import { getKey } from "@/lib/key";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export async function GET(
@@ -9,9 +10,9 @@ export async function GET(
 
   const linkKeyValueStore: KVNamespace = cloudflareContext.env.LINKS;
 
-  const link = await linkKeyValueStore.get(availableParams.link);
+  const link = await getKey(availableParams.link, linkKeyValueStore);
 
-  if (link === null) {
+  if (!link) {
     return Response.redirect("https://ellipse.software");
   }
 
