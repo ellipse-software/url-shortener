@@ -24,7 +24,7 @@ export function Footer() {
       </p>
       <Link
         target="_blank"
-        className="text-foreground hover:underline underline-offset-2"
+        className="text-foreground text-xs hover:underline underline-offset-2"
         href="https://github.com/ellipse-software/url-shortener"
       >
         View Source
