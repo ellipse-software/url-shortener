@@ -36,7 +36,7 @@ npm/yarn/pnpm/bun install
 Install and login to the CLI tool `wrangler`. Then create three namespaces:
 
 ```
-`wrangler kv namespace create <name>`
+wrangler kv namespace create <name>
 ```
 
 The names are `LINKS`, `REVERSE_LINKS` and `LIMITS`.
