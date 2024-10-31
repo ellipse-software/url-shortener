@@ -39,7 +39,7 @@ Install and login to the CLI tool `wrangler`. Then create three namespaces:
 wrangler kv namespace create <name>
 ```
 
-The names are `LINKS`, `REVERSE_LINKS` and `LIMITS`.
+The names are `LINKS`, `REVERSE_LINKS` and `LIMITS`. Replace the generated IDs in the `wrangler.toml` file.
 
 ## License
 
