@@ -5,13 +5,15 @@ standard.
 
 ## Features
 
-- 👮 **Privacy**: No tracking feature has been added.
+- 👮 **Privacy**: No tracking feature, privacy first.
 
-- 🚀 **Performance**: Built on Cloudflare's global network.
+- 🚀 **Performance**: Built to use Cloudflare's global network.
 
 - 📦 **Easy Deployment**: Deploy with one command.
 
-- 📡 **Serverless**: No server management required thanks to Workers.
+- 📡 **Serverless**: No server management required, thanks to Workers.
+
+- 🧪 **Rate limitng**: Rate limiting, built in.
 
 ## Deploy
 
