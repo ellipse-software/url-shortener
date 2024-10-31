@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
@@ -8,8 +8,13 @@ import { Header } from "@/components/header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "url shortener",
-  description: "url shortener",
+  title: "An open source link shortener.",
+  description:
+    "A url shortener that respects your privacy and deployed on your own infrastructure. Built on Cloudflare KV and Workers. Serverlessly deployed. Privacy as standard.",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#2266EF",
 };
 
 export default function RootLayout({
