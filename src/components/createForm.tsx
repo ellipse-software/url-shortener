@@ -40,6 +40,18 @@ export function CreateForm() {
     setLoading(true);
     const timeA = new Date();
 
+    if (values.link.startsWith(window.location.href)) {
+      const timeTaken = new Date().getTime() - timeA.getTime();
+
+      if (nav) nav.clipboard.writeText(values.link);
+      form.setValue("link", values.link);
+      form.setFocus("link");
+
+      toast.info(`Looks like you tried to shorten a shortened link!`, {});
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await fetch(`/create?link=${values.link}`, {
         method: "POST",
