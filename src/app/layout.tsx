@@ -12,6 +12,15 @@ export const metadata: Metadata = {
   title: "An open source link shortener.",
   description:
     "A url shortener that respects your privacy and deployed on your own infrastructure. Built on Cloudflare KV and Workers. Serverlessly deployed. Privacy as standard.",
+  openGraph: {
+    images: [
+      {
+        url: "https://storage.ellipse.software/url.png",
+        width: 1699,
+        height: 465,
+      },
+    ],
+  },
 };
 
 export const viewport: Viewport = {
