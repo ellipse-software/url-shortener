@@ -1,3 +1,5 @@
+![Banner](https://storage.ellipse.software/ad-us.png)
+
 # An open source link shortener.
 
 A url shortener that respects your privacy and deployed on your own infrastructure. Built on Cloudflare KV and Workers. Serverlessly deployed. Privacy as
