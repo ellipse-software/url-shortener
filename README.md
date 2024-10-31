@@ -22,7 +22,7 @@ standard.
 Deploy with one command:
 
 ```bash
-bun run deploy
+bun run deploy:worker
 ```
 
 ## Setup
