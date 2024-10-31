@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,11 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={
-          " cursor-default selection:bg-[#2266EF]/70 selection:text-foreground/70  text-foreground" +
-          " " +
+        className={cn(
+          "cursor-default selection:bg-[#2266EF]/70 selection:text-foreground/70  text-foreground",
           inter.className
-        }
+        )}
       >
         {children}
         <Toaster richColors position="top-center" />
