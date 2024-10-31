@@ -61,7 +61,7 @@ export function CreateForm() {
 
       toast.success(`Link copied to clipboard in ${timeTaken}ms`, {});
     } catch (error) {
-      toast.error("Failed to create link");
+      toast.error("Failed to create link. Are you rate limited?");
     }
 
     setLoading(false);
