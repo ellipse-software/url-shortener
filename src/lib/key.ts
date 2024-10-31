@@ -18,8 +18,8 @@ export async function generateKey(
   return result;
 }
 
-export async function getKey(key: string, linkKeyValueStore: KVNamespace) {
-  const link = await linkKeyValueStore.get(key);
+export async function getKey(key: string, keyValueStore: KVNamespace) {
+  const link = await keyValueStore.get(key);
 
   if (link === null) {
     return false;
@@ -36,7 +36,7 @@ export async function existingLinkCheck(
 
   for (const key of keys) {
     if (key.name === link) {
-      const value = await reverseLinkKeyValueStore.get(key.name);
+      const value = await getKey(key.name, reverseLinkKeyValueStore);
       return value;
     }
   }
