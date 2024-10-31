@@ -14,6 +14,24 @@ function generateKey(length: number) {
   return result;
 }
 
+async function setRateLimit(ip: string, limitKeyValueStore: KVNamespace) {
+  await limitKeyValueStore.put(ip, Date.now().toString(), {
+    expirationTtl: 5000,
+  });
+}
+
+async function checkRateLimit(ip: string, limitKeyValueStore: KVNamespace) {
+  const limit = await limitKeyValueStore.get(ip);
+
+  if (limit != null) {
+    if (parseInt(limit) > Date.now() - 5000) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 export async function create(link: string, length: number = 5) {
   const cloudflareContext: any = await getCloudflareContext();
   const ip = (await headers()).get("cf-connecting-ip") || "no ip";
@@ -21,14 +39,10 @@ export async function create(link: string, length: number = 5) {
   const linkKeyValueStore: KVNamespace = cloudflareContext.env.LINKS;
   const limitKeyValueStore: KVNamespace = cloudflareContext.env.LIMITS;
 
-  const limit = await limitKeyValueStore.get(ip);
-
-  if (limit != null) {
-    if (parseInt(limit) > Date.now() - 5000) {
-      return {
-        error: "Rate limit exceeded",
-      };
-    }
+  if (!checkRateLimit(ip, limitKeyValueStore)) {
+    return {
+      error: "Rate limited",
+    };
   }
 
   const key = generateKey(length);
@@ -40,11 +54,8 @@ export async function create(link: string, length: number = 5) {
   }
 
   try {
-    const res = await linkKeyValueStore.put(key, link);
-
-    await limitKeyValueStore.put(ip, Date.now().toString(), {
-      expirationTtl: 5000,
-    });
+    await linkKeyValueStore.put(key, link);
+    await setRateLimit(ip, limitKeyValueStore);
   } catch (error) {
     console.error(error);
     return {
