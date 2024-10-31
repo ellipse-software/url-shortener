@@ -1,4 +1,4 @@
-![Banner](https://storage.ellipse.software/ad-us.png)
+![Banner](https://storage.ellipse.software/ad-us.png))
 
 # An open source link shortener.
 
