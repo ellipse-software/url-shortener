@@ -57,6 +57,7 @@ export function CreateForm() {
 
       if (nav) nav.clipboard.writeText(fullLink);
       form.setValue("link", fullLink);
+      form.setFocus("link");
 
       toast.success(`Link copied to clipboard in ${timeTaken}ms`, {});
     } catch (error) {
