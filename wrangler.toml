@@ -9,6 +9,12 @@ minify = true
 
 assets = { directory = ".worker-next/assets", binding = "ASSETS" }
 
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+# CHANGE THESE
+
 [[kv_namespaces]]
 binding = "LINKS"
 id = "a8074402f01c4314abc07f894696ce84"
@@ -20,7 +26,3 @@ id = "24b2ed4580a44a8d9f632cd2d2864e88"
 [[kv_namespaces]]
 binding = "LIMITS"
 id = "dc35f6334c6249e48e217f57d8054c28"
-
-[observability]
-enabled = true
-head_sampling_rate = 1
