@@ -14,7 +14,7 @@
     "build:worker": "cloudflare",
     "deploy:worker": "cloudflare && wrangler deploy",
     "preview:worker": "cloudflare && wrangler dev",
-    "types": "wrangler types --env-interface CloudflareEnv env.d.ts"
+    "types": "npx wrangler types --experimental-include-runtime='./runtime.d.ts'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
