@@ -25,6 +25,8 @@ bun run deploy
 
 **Ensure you have created 3 KV namespaces and filled in the IDs in `wrangler.tom` file.**
 
+You can use `wrangler kv namespace create <NAME>` to do this.
+
 ## License
 
 Project built with [shadcn/ui](https://ui.shadcn.com) and [Cloudflare](https://cloudflare.com) Workers and KV.
