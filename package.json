@@ -10,8 +10,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "cloudflare && wrangler deploy",
-    "preview": "cloudflare && wrangler dev",
+    "dev:worker": "wrangler dev",
+    "build:worker": "cloudflare",
+    "deploy:worker": "cloudflare && wrangler deploy",
+    "preview:worker": "cloudflare && wrangler dev",
     "types": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
