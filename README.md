@@ -3,6 +3,8 @@
 A url shortener that respects your privacy and deployed on your own infrastructure. Built on Cloudflare KV and Workers. Serverlessly deployed. Privacy as
 standard.
 
+**DEMO:** [url.ellipse.software](https://url.ellipse.software)
+
 ## Features
 
 - 👮 **Privacy**: No tracking feature, privacy first.
@@ -25,9 +27,13 @@ bun run deploy
 
 ## Setup
 
-The standard, `git clone`, `bun install`, `wrangler login`.
+Once cloned, install the packages using your favourite package manager:
 
-Then create three namespaces:
+```
+npm/yarn/pnpm/bun install
+```
+
+Install and login to the CLI tool `wrangler`. Then create three namespaces:
 
 ```
 `wrangler kv namespace create <name>`
