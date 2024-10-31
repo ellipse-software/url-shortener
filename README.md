@@ -41,6 +41,14 @@ wrangler kv namespace create <name>
 
 The names are `LINKS`, `REVERSE_LINKS` and `LIMITS`. Replace the generated IDs in the `wrangler.toml` file.
 
+## Contributing
+
+We are welcome to contributions. Please fork the repository and create a pull request.
+
+## Issues
+
+If you have a questio or there is a problem, please open an issue.
+
 ## License
 
 Project built with [shadcn/ui](https://ui.shadcn.com) and [Cloudflare](https://cloudflare.com) Workers and KV.
