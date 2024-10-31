@@ -15,7 +15,5 @@ export async function GET(
     return Response.redirect("https://ellipse.software");
   }
 
-  console.log(link);
-
   return Response.redirect(link, 301);
 }

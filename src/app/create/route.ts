@@ -21,5 +21,9 @@ export async function POST(request: NextRequest) {
 
   const link = await create(query);
 
-  return Response.json({ link: link });
+  if (link.error) {
+    return Response.json({ error: link.error }, { status: 500 });
+  }
+
+  return Response.json({ link: link.key });
 }
