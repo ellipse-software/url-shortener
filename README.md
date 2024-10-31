@@ -15,7 +15,7 @@ standard.
 
 - 📡 **Serverless**: No server management required, thanks to Workers.
 
-- 🧪 **Rate limitng**: Rate limiting, built in.
+- 🧪 **Rate limiting**: Rate limiting, built in.
 
 ## Deploy
 
@@ -47,7 +47,7 @@ We are welcome to contributions. Please fork the repository and create a pull re
 
 ## Issues
 
-If you have a questio or there is a problem, please open an issue.
+If you have a question or there is a problem, please open an issue.
 
 ## License
 
