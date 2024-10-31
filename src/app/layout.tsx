@@ -21,14 +21,12 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={
-          "flex flex-col cursor-default selection:bg-[#2266EF]/70 selection:text-foreground/70 items-center space-y-6 justify-center h-screen text-foreground" +
+          " cursor-default selection:bg-[#2266EF]/70 selection:text-foreground/70  text-foreground" +
           " " +
           inter.className
         }
       >
-        <Header />
         {children}
-        <Footer />
         <Toaster richColors position="top-center" />
       </body>
     </html>
