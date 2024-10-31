@@ -43,7 +43,11 @@ export function CreateForm() {
     if (values.link.startsWith(window.location.href)) {
       const timeTaken = new Date().getTime() - timeA.getTime();
 
-      if (nav) nav.clipboard.writeText(values.link);
+      try {
+        if (nav) nav.clipboard.writeText(values.link);
+      } catch (error) {
+        toast.error("Failed to copy link to clipboard");
+      }
       form.setValue("link", values.link);
       form.setFocus("link");
 

@@ -27,3 +27,19 @@ export async function getKey(key: string, linkKeyValueStore: KVNamespace) {
 
   return link;
 }
+
+export async function existingLinkCheck(
+  link: string,
+  reverseLinkKeyValueStore: KVNamespace
+) {
+  const keys = (await reverseLinkKeyValueStore.list()).keys;
+
+  for (const key of keys) {
+    if (key.name === link) {
+      const value = await reverseLinkKeyValueStore.get(key.name);
+      return value;
+    }
+  }
+
+  return false;
+}
