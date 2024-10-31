@@ -23,9 +23,17 @@ Deploy with one command:
 bun run deploy
 ```
 
-**Ensure you have created 3 KV namespaces and filled in the IDs in `wrangler.tom` file.**
+## Setup
 
-You can use `wrangler kv namespace create <NAME>` to do this.
+The standard, `git clone`, `bun install`, `wrangler login`.
+
+Then create three namespaces:
+
+```
+`wrangler kv namespace create <name>`
+```
+
+The names are `LINKS`, `REVERSE_LINKS` and `LIMITS`.
 
 ## License
 
