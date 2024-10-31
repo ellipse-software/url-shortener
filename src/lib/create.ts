@@ -10,7 +10,7 @@ export async function create(link: string, length = 5) {
   const linkKeyValueStore: KVNamespace = cloudflareContext.env.LINKS;
   const limitKeyValueStore: KVNamespace = cloudflareContext.env.LIMITS;
 
-  if (!checkRateLimit(ip, limitKeyValueStore)) {
+  if (!(await checkRateLimit(ip, limitKeyValueStore))) {
     return {
       error: "Rate limited",
     };
