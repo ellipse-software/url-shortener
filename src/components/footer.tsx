@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <div className="flex flex-row items-center justify-center space-x-2">
+    <div className="flex flex-col items-center justify-center space-y-2">
       <p className="text-xs text-foreground/50">
         Built by{" "}
         <Link
@@ -22,6 +22,13 @@ export function Footer() {
         </Link>
         .
       </p>
+      <Link
+        target="_blank"
+        className="text-foreground hover:underline underline-offset-2"
+        href="https://github.com/ellipse-software/url-shortener"
+      >
+        View Source
+      </Link>
     </div>
   );
 }
