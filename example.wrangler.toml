@@ -1,16 +1,3 @@
-
-[[kv_namespaces]]
-binding = "LINKS"
-id = "ID"
-
-[[kv_namespaces]]
-binding = "REVERSE_LINKS"
-id = "ID"
-
-[[kv_namespaces]]
-binding = "LIMITS"
-id = "ID"
-
 name = "url-shortener"
 main = ".worker-next/index.mjs"
 
@@ -24,3 +11,16 @@ assets = { directory = ".worker-next/assets", binding = "ASSETS" }
 [observability]
 enabled = true
 head_sampling_rate = 1
+
+[[kv_namespaces]]
+binding = "LINKS"
+id = "ID"
+
+[[kv_namespaces]]
+binding = "REVERSE_LINKS"
+id = "ID"
+
+[[kv_namespaces]]
+binding = "LIMITS"
+id = "ID"
+
