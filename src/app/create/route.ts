@@ -1,8 +1,7 @@
 import { create } from "@/lib/create";
-import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { type NextRequest } from "next/server";
-import { formSchema } from "@/schema/createSchema";
 import { z } from "zod";
+import { headers } from "next/headers";
 
 export async function GET() {
   return Response.redirect("https://ellipse.software");
@@ -11,6 +10,8 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const query = searchParams.get("link");
+  const ip =
+    (await headers()).get("cf-connecting-ip") || "Couldn't find identity";
 
   if (!query) {
     return Response.json({ error: "missing link" }, { status: 400 });
@@ -19,7 +20,7 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "invalid link" }, { status: 400 });
   }
 
-  const link = await create(query);
+  const link = await create(query, ip);
 
   if (link.error) {
     return Response.json({ error: link.error }, { status: 500 });

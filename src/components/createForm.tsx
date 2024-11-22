@@ -17,7 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { formSchema } from "@/schema/createSchema";
 import { toast } from "sonner";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function CreateForm() {
   const [loading, setLoading] = useState(false);
@@ -34,8 +34,6 @@ export function CreateForm() {
     const timeA = new Date();
 
     if (values.link.startsWith(window.location.href)) {
-      const timeTaken = new Date().getTime() - timeA.getTime();
-
       try {
         await navigator.clipboard.writeText(values.link);
       } catch (error) {
@@ -68,9 +66,9 @@ export function CreateForm() {
         await navigator.clipboard.writeText(fullLink);
         toast.success(`Link copied to clipboard in ${timeTaken}ms`, {});
       } catch (error) {
-        toast.warning("We couldn't copy the link to your clipboard.")
+        toast.warning("We couldn't copy the link to your clipboard.");
       }
-      
+
       form.setValue("link", fullLink);
       form.setFocus("link");
     } catch (error) {

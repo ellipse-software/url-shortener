@@ -1,11 +1,10 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { headers } from "next/headers";
 import { checkRateLimit, setRateLimit } from "./rateLimit";
 import { existingLinkCheck, generateKey } from "./key";
+import { sendNotification } from "./notification";
 
-export async function create(link: string, length = 5) {
+export async function create(link: string, ip: string, length = 5) {
   const cloudflareContext: any = await getCloudflareContext();
-  const ip = (await headers()).get("cf-connecting-ip") || "no ip";
 
   const linkKeyValueStore: KVNamespace = cloudflareContext.env.LINKS;
   const reverseLinkKeyValueStore: KVNamespace =
@@ -13,7 +12,28 @@ export async function create(link: string, length = 5) {
   const limitKeyValueStore: KVNamespace = cloudflareContext.env.LIMITS;
 
   const existingLink = await existingLinkCheck(link, reverseLinkKeyValueStore);
-  if (existingLink) return { key: existingLink };
+  if (existingLink) {
+    await sendNotification(
+      "Link Created",
+      "An existing link has been requested",
+      [
+        {
+          name: "🔗 Link",
+          value: `📥 \`${link}\`\n📤 \`${existingLink}\``,
+          inline: true,
+        },
+        {
+          name: "🔎 Context",
+          value: `🌍 \`${cloudflareContext.cf.country}\`\n🍋 \`${cloudflareContext.cf.city}\`\n💻\`${cloudflareContext.cf.asOrganization}\``,
+          inline: true,
+        },
+      ],
+      `🔥 ${ip}`,
+      16769859
+    );
+
+    return { key: existingLink };
+  }
 
   if (!(await checkRateLimit(ip, limitKeyValueStore))) {
     return {
@@ -33,6 +53,24 @@ export async function create(link: string, length = 5) {
       error: "Failed to create link",
     };
   }
+
+  await sendNotification(
+    "Link Created",
+    "A new link has been created",
+    [
+      {
+        name: "🔗 Link",
+        value: `📥 \`${link}\`\n📤 \`${key}\``,
+        inline: true,
+      },
+      {
+        name: "🔎 Context",
+        value: `🌍 \`${cloudflareContext.cf.country}\`\n🍋 \`${cloudflareContext.cf.city}\`\n💻\`${cloudflareContext.cf.asOrganization}\``,
+        inline: true,
+      },
+    ],
+    `🔥 ${ip}`
+  );
 
   return {
     key: key,
