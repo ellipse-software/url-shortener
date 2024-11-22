@@ -10,10 +10,13 @@ export async function GET(
 
   const linkKeyValueStore: KVNamespace = cloudflareContext.env.LINKS;
 
+  if (!linkKeyValueStore)
+    throw new Error("Missing KV Namespace: LINKS do not exist.");
+
   const link = await getKey(availableParams.link, linkKeyValueStore);
 
   if (!link) {
-    return Response.redirect("https://ellipse.software");
+    return Response.redirect("/");
   }
 
   return Response.redirect(link, 301);

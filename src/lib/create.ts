@@ -11,9 +11,17 @@ export async function create(link: string, ip: string, length = 5) {
     cloudflareContext.env.REVERSE_LINKS;
   const limitKeyValueStore: KVNamespace = cloudflareContext.env.LIMITS;
 
+  if (!linkKeyValueStore)
+    throw new Error("Missing KV Namespace: LINKS do not exist.");
+  if (!reverseLinkKeyValueStore)
+    throw new Error("Missing KV Namespace: REVERSE_LINKS do not exist.");
+  if (!limitKeyValueStore)
+    throw new Error("Missing KV Namespace: LIMITS do not exist.");
+
   const existingLink = await existingLinkCheck(link, reverseLinkKeyValueStore);
   if (existingLink) {
     await sendNotification(
+      cloudflareContext.env.DISCORD_WEBHOOK,
       "Link Created",
       "An existing link has been requested",
       [
@@ -55,6 +63,7 @@ export async function create(link: string, ip: string, length = 5) {
   }
 
   await sendNotification(
+    cloudflareContext.env.DISCORD_WEBHOOK,
     "Link Created",
     "A new link has been created",
     [

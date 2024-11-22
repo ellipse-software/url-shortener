@@ -1,16 +1,11 @@
-import { getCloudflareContext } from "@opennextjs/cloudflare";
-
 export async function sendNotification(
+  webhook: string | undefined,
   title: string,
   description: string,
   fields: any[],
   footer: string,
   color = 5424336
 ): Promise<void> {
-  const { env }: any = await getCloudflareContext();
-
-  const webhook = env.DISCORD_WEBHOOK;
-
   if (!webhook) return;
 
   await fetch(webhook, {
