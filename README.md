@@ -101,4 +101,4 @@ If you have a question or there is a problem, please open an issue.
 
 Project built with [shadcn/ui](https://ui.shadcn.com) and [Cloudflare](https://cloudflare.com) Workers and KV.
 
-This project is licensed under the MIT License. This project has been created by [t3d.uk](https://ted.ac) and open sourced by [Ellipse Software](https://ellipse.software).
+This project is licensed under the MIT License. This project has been created by [t3d.uk](https://ted.ac) and open sourced by [ellipse Software](https://ellipse.software).
