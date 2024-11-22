@@ -45,6 +45,14 @@ The names are `LINKS`, `REVERSE_LINKS` and `LIMITS`.
 
 Create a `wrangler.toml` from the `example.wrangler.toml` and replace `ID` with the newly generated ids.
 
+Now run the following commands to deploy:
+
+```
+bun run build:worker
+bun run types
+bun run deploy:worker
+```
+
 ## Contributing
 
 We are welcome to contributions. Please fork the repository and create a pull request.
@@ -58,3 +66,7 @@ If you have a question or there is a problem, please open an issue.
 Project built with [shadcn/ui](https://ui.shadcn.com) and [Cloudflare](https://cloudflare.com) Workers and KV.
 
 This project is licensed under the MIT License. This project has been created by [t3d.uk](https://t3d.uk) and open sourced by [Ellipse Software](https://ellipse.software).
+
+```
+
+```
