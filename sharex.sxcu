@@ -1,0 +1,11 @@
+﻿{
+  "Version": "16.1.0",
+  "Name": "URL Shortener",
+  "DestinationType": "URLShortener",
+  "RequestMethod": "POST",
+  "RequestURL": "your.domain.com/create",
+  "Parameters": {
+    "link": "{input}"
+  },
+  "URL": "https://your.domain.com/{json:link}"
+}

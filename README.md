@@ -87,7 +87,35 @@ wrangler secret put DISCORD_WEBHOOK
 
 After this, and redeploying, you will receive notifications on your Discord webhook when a link is requested.
 
-**If there is an error in your configuration, your Worker may purposely error.**
+**Note:** If there is an error in your configuration, your Worker may purposely error.
+
+## 🔌 API and ShareX Integration
+
+You can directly create a link using the API programmatically, or to use ShareX as a link shortener.
+
+### API
+
+`POST /create?link=<link>`
+
+This will return the following JSON object:
+
+```
+{
+  link: string
+}
+```
+
+**Note:** `link` will return the key of the link. Therefore, to use it you will need to do something like `your.domain.com/<link>`.
+
+### ShareX
+
+To use ShareX as a link shortener, import the configuration from the following URL:
+
+```
+// coming soon
+```
+
+**Note:** Make sure you change `your.domain.com` with your actual domain.
 
 ## ✌️ Contributing
 
