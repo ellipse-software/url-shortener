@@ -19,39 +19,59 @@ standard.
 
 - 🧪 **Rate limiting**: Rate limiting, built in.
 
-## Deploy
-
-Deploy with one command:
-
-```bash
-bun run deploy:worker
-```
-
 ## Setup
 
-Once cloned, install the packages using your favourite package manager:
+1. Clone the latest version of the repository:
+
+```
+git clone https://github.com/ellipse-software/url-shortener.git
+```
+
+2. Install the dependencies using your favorite package manager:
 
 ```
 npm/yarn/pnpm/bun install
 ```
 
-Install and login to the CLI tool `wrangler`. Then create three namespaces:
+3. Install and login to the CLI tool `wrangler`. if you haven't already:
 
 ```
-wrangler kv namespace create <name>
+wrangler login
 ```
 
-The names are `LINKS`, `REVERSE_LINKS` and `LIMITS`.
+4. Create a `wrangler.toml` file by copying the `example.wrangler.toml` file:
 
-Create a `wrangler.toml` from the `example.wrangler.toml` and replace `ID` with the newly generated ids.
+```
+cp example.wrangler.toml wrangler.toml
+```
 
-Now run the following commands to deploy:
+5. Create three KV namespaces using the following commands:
+
+```
+wrangler kv namespace create LINKS
+wrangler kv namespace create REVERSE_LINKS
+wrangler kv namespace create LIMITS
+```
+
+After creating each namespace, replace the `ID` in your new `wrangler.toml` file with the newly generated `ID` after running each command. If you plan to change the namespace names, make sure to update the code accordingly.
+
+6. Now run the following commands to deploy to Cloudflare:
 
 ```
 bun run build:worker
 bun run types
 bun run deploy:worker
 ```
+
+7. _optional_ Uf you would like to enable Discord Webhook Notifications, you can add the `DISCORD_WEBHOOK` secret to your Worker with the following command:
+
+```
+wrangler secret put DISCORD_WEBHOOK
+```
+
+After this, and redeploying, you will receive notifications on your Discord webhook when a link is requested.
+
+**If there is an error in your configuration, your Worker may purposely error.**
 
 ## Contributing
 
@@ -66,7 +86,3 @@ If you have a question or there is a problem, please open an issue.
 Project built with [shadcn/ui](https://ui.shadcn.com) and [Cloudflare](https://cloudflare.com) Workers and KV.
 
 This project is licensed under the MIT License. This project has been created by [t3d.uk](https://t3d.uk) and open sourced by [Ellipse Software](https://ellipse.software).
-
-```
-
-```
