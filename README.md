@@ -112,7 +112,7 @@ This will return the following JSON object:
 To use ShareX as a link shortener, import the configuration from the following URL:
 
 ```
-// coming soon
+https://raw.githubusercontent.com/ellipse-software/url-shortener/refs/heads/main/sharex.sxcu
 ```
 
 **Note:** Make sure you change `your.domain.com` with your actual domain.
