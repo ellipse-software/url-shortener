@@ -8,4 +8,4 @@
 
 ## Reporting a Vulnerability
 
-To report a security vulnerbility, you can contact [t3duk](t.me/@t3duk) on Telegram for an end to end encrypted conversation.
+To report a security vulnerability, you can contact [t3duk](t.me/@t3duk) on Telegram for an end to end encrypted conversation.
