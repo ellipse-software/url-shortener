@@ -21,13 +21,6 @@ import { useEffect, useState } from "react";
 
 export function CreateForm() {
   const [loading, setLoading] = useState(false);
-  const [nav, setNav] = useState<Navigator | null>(null);
-
-  useEffect(() => {
-    if (window.navigator) {
-      setNav(window.navigator);
-    }
-  }, []);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -44,7 +37,7 @@ export function CreateForm() {
       const timeTaken = new Date().getTime() - timeA.getTime();
 
       try {
-        if (nav) nav.clipboard.writeText(values.link);
+        await navigator.clipboard.writeText(values.link);
       } catch (error) {
         toast.error("Failed to copy link to clipboard");
       }
@@ -71,11 +64,15 @@ export function CreateForm() {
 
       const timeTaken = new Date().getTime() - timeA.getTime();
 
-      if (nav) nav.clipboard.writeText(fullLink);
+      try {
+        await navigator.clipboard.writeText(fullLink);
+        toast.success(`Link copied to clipboard in ${timeTaken}ms`, {});
+      } catch (error) {
+        toast.warning("We couldn't copy the link to your clipboard.")
+      }
+      
       form.setValue("link", fullLink);
       form.setFocus("link");
-
-      toast.success(`Link copied to clipboard in ${timeTaken}ms`, {});
     } catch (error) {
       toast.error("Failed to create link. Are you rate limited?");
     }
