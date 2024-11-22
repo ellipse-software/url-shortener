@@ -49,7 +49,13 @@ cp example.wrangler.toml wrangler.toml
 
 ```
 wrangler kv namespace create LINKS
+```
+
+```
 wrangler kv namespace create REVERSE_LINKS
+```
+
+```
 wrangler kv namespace create LIMITS
 ```
 
@@ -59,7 +65,13 @@ After creating each namespace, replace the `ID` in your new `wrangler.toml` file
 
 ```
 bun run build:worker
+```
+
+```
 bun run types
+```
+
+```
 bun run deploy:worker
 ```
 
