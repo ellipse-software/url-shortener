@@ -115,6 +115,11 @@ To use ShareX as a link shortener, import the configuration from the following U
 https://raw.githubusercontent.com/ellipse-software/url-shortener/refs/heads/main/sharex.sxcu
 ```
 
+<div>
+<img alt="Step 1" src="https://direct.uploads.gg/mUbLvWvWV" width="25%">
+<img alt="Step 2" src="https://direct.uploads.gg/i2hL5a6DS" width="25%">
+</div>
+
 **Note:** Make sure you change `your.domain.com` with your actual domain.
 
 ## ✌️ Contributing
