@@ -5,9 +5,9 @@
 A url shortener that respects your privacy and deployed on your own infrastructure. Built on Cloudflare KV and Workers. Serverlessly deployed. Privacy as
 standard.
 
-**DEMO:** [url.ellipse.software](https://url.ellipse.software)
+**🚧 DEMO:** [url.ellipse.software](https://url.ellipse.software)
 
-## Features
+## 🔥 Features
 
 - 👮 **Privacy**: No tracking feature, privacy first.
 
@@ -19,7 +19,7 @@ standard.
 
 - 🧪 **Rate limiting**: Rate limiting, built in.
 
-## Setup
+## 🧪 Install
 
 1. Clone the latest version of the repository:
 
@@ -61,7 +61,9 @@ wrangler kv namespace create LIMITS
 
 After creating each namespace, replace the `ID` in your new `wrangler.toml` file with the newly generated `ID` after running each command. If you plan to change the namespace names, make sure to update the code accordingly.
 
-6. Now run the following commands to deploy to Cloudflare:
+## 🚀 Deployment
+
+Run these three commands to build and deploy the Worker:
 
 ```
 bun run build:worker
@@ -75,7 +77,9 @@ bun run types
 bun run deploy:worker
 ```
 
-7. _optional_ Uf you would like to enable Discord Webhook Notifications, you can add the `DISCORD_WEBHOOK` secret to your Worker with the following command:
+## ⚙️ Configuration
+
+If you would like to enable Discord Webhook Notifications, you can add the `DISCORD_WEBHOOK` secret to your Worker with the following command:
 
 ```
 wrangler secret put DISCORD_WEBHOOK
@@ -85,16 +89,16 @@ After this, and redeploying, you will receive notifications on your Discord webh
 
 **If there is an error in your configuration, your Worker may purposely error.**
 
-## Contributing
+## ✌️ Contributing
 
 We are welcome to contributions. Please fork the repository and create a pull request.
 
-## Issues
+## 🚨 Issues
 
 If you have a question or there is a problem, please open an issue.
 
-## License
+## ⚖️ Information
 
 Project built with [shadcn/ui](https://ui.shadcn.com) and [Cloudflare](https://cloudflare.com) Workers and KV.
 
-This project is licensed under the MIT License. This project has been created by [t3d.uk](https://t3d.uk) and open sourced by [Ellipse Software](https://ellipse.software).
+This project is licensed under the MIT License. This project has been created by [t3d.uk](https://ted.ac) and open sourced by [Ellipse Software](https://ellipse.software).

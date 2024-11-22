@@ -8,7 +8,7 @@ export function Footer() {
         <Link
           target="_blank"
           className="text-foreground hover:underline underline-offset-2"
-          href="https://t3d.uk"
+          href="https://ted.ac"
         >
           t3d.uk
         </Link>{" "}
