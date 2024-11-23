@@ -16,10 +16,22 @@ import {
 import { Input } from "@/components/ui/input";
 import { formSchema } from "@/schema/createSchema";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { RetryCopyDialog } from "./retryCopy";
 
 export function CreateForm() {
+  const [retry, setRetry] = useState(false);
+  const [link, setLink] = useState("");
+  const [clipboard, setClipboard] = useState<Clipboard | null>(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (navigator.clipboard) {
+      setClipboard(navigator.clipboard);
+    } else {
+      console.error("Clipboard API not available");
+    }
+  }, []);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -53,17 +65,18 @@ export function CreateForm() {
 
       const timeTaken = new Date().getTime() - timeA.getTime();
 
+      setLink(fullLink);
       form.setValue("link", fullLink);
       form.setFocus("link");
 
       try {
-        await navigator.clipboard.writeText(fullLink);
-        toast.success(`Link copied to clipboard in ${timeTaken}ms`, {});
+        if (clipboard) {
+          await clipboard.writeText(fullLink);
+          toast.success(`Link copied to clipboard in ${timeTaken}ms`, {});
+        } else throw new Error("Clipboard API not available");
       } catch (error) {
-        toast.warning("Link created in ${timeTaken}ms", {
-          description:
-            "We couldn't copy it to your clipboard, so you will have to manually do it.",
-        });
+        toast.success(`Link created in ${timeTaken}ms`, {});
+        setRetry(true);
         console.error(error);
       }
     } catch (error) {
@@ -75,37 +88,42 @@ export function CreateForm() {
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-4 flex flex-col items-center justify-center"
-      >
-        <FormField
-          control={form.control}
-          name="link"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormControl className="w-full">
-                <Input
-                  className="w-full"
-                  id="link-akO3fj"
-                  placeholder="https://ellipse.software"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button
-          disabled={loading}
-          className="max-w-48 w-full"
-          variant="secondary"
-          type="submit"
+    <>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-4 flex flex-col items-center justify-center"
         >
-          {loading ? "Shortening..." : "Shorten"}
-        </Button>
-      </form>
-    </Form>
+          <FormField
+            control={form.control}
+            name="link"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl className="w-full">
+                  <Input
+                    className="w-full"
+                    id="link-akO3fj"
+                    placeholder="https://ellipse.software"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button
+            disabled={loading}
+            className="max-w-48 w-full"
+            variant="secondary"
+            type="submit"
+          >
+            {loading ? "Shortening..." : "Shorten"}
+          </Button>
+        </form>
+      </Form>
+      {retry && (
+        <RetryCopyDialog retry={retry} setRetry={setRetry} link={link} />
+      )}
+    </>
   );
 }

@@ -3,7 +3,12 @@ import { checkRateLimit, setRateLimit } from "./rateLimit";
 import { existingLinkCheck, generateKey } from "./key";
 import { sendNotification } from "./notification";
 
-export async function create(link: string, ip: string, length = 5) {
+export async function create(
+  link: string,
+  ip: string,
+  rayId: string,
+  length = 5
+) {
   const cloudflareContext: any = await getCloudflareContext();
 
   const linkKeyValueStore: KVNamespace = cloudflareContext.env.LINKS;
@@ -32,11 +37,11 @@ export async function create(link: string, ip: string, length = 5) {
         },
         {
           name: "🔎 Context",
-          value: `🌍 \`${cloudflareContext.cf.country}\`\n🍋 \`${cloudflareContext.cf.city}\`\n💻\`${cloudflareContext.cf.asOrganization}\``,
+          value: `🌍 \`${cloudflareContext.cf.country}\` / \`${cloudflareContext.cf.city}\`\n🔦 \`${rayId}\``,
           inline: true,
         },
       ],
-      `🔥 ${ip}`,
+      ``,
       16769859
     );
 
@@ -74,11 +79,11 @@ export async function create(link: string, ip: string, length = 5) {
       },
       {
         name: "🔎 Context",
-        value: `🌍 \`${cloudflareContext.cf.country}\`\n🍋 \`${cloudflareContext.cf.city}\`\n💻\`${cloudflareContext.cf.asOrganization}\``,
+        value: `🌍 \`${cloudflareContext.cf.country}\` / \`${cloudflareContext.cf.city}\`\n🔦 \`${rayId}\``,
         inline: true,
       },
     ],
-    `🔥 ${ip}`
+    ``
   );
 
   return {

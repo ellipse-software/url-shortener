@@ -10,8 +10,8 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const query = searchParams.get("link");
-  const ip =
-    (await headers()).get("cf-connecting-ip") || "Couldn't find identity";
+  const ip = headers().get("cf-connecting-ip") || "Couldn't find identity";
+  const rayId = headers().get("cf-ray") || "Couldn't find ray id";
 
   if (!query) {
     return Response.json({ error: "missing link" }, { status: 400 });
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "invalid link" }, { status: 400 });
   }
 
-  const link = await create(query, ip);
+  const link = await create(query, ip, rayId);
 
   if (link.error) {
     return Response.json({ error: link.error }, { status: 500 });

@@ -3,5 +3,5 @@
 import { z } from "zod";
 
 export const formSchema = z.object({
-  link: z.string().url(),
+  link: z.string().url().max(32768),
 });
