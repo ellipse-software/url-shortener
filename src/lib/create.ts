@@ -23,6 +23,12 @@ export async function create(
   if (!limitKeyValueStore)
     throw new Error("Missing KV Namespace: LIMITS do not exist.");
 
+  if (!(await checkRateLimit(ip, limitKeyValueStore))) {
+    return {
+      error: "Rate limited",
+    };
+  }
+
   const existingLink = await existingLinkCheck(link, reverseLinkKeyValueStore);
   if (existingLink) {
     await sendNotification(
@@ -46,12 +52,6 @@ export async function create(
     );
 
     return { key: existingLink };
-  }
-
-  if (!(await checkRateLimit(ip, limitKeyValueStore))) {
-    return {
-      error: "Rate limited",
-    };
   }
 
   const key = await generateKey(length, linkKeyValueStore);
