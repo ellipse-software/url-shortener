@@ -22,13 +22,13 @@ standard.
 ## 📜 Wiki
 
 - [🧪 Installation](https://github.com/ellipse-software/url-shortener/wiki/%F0%9F%A7%AA-Installation)
-- 
+
 - [🚀 Deployment](https://github.com/ellipse-software/url-shortener/wiki/%F0%9F%9A%80-Deployment)
-- 
+
 - [🤖 Discord Webhook Integration](https://github.com/ellipse-software/url-shortener/wiki/%F0%9F%A4%96-Discord-Webhook-Integration)
-- 
+
 - [🔗 API](https://github.com/ellipse-software/url-shortener/wiki/%F0%9F%94%8C-API-and-ShareX-Integration)
-- 
+
 - [☁️ ShareX](https://github.com/ellipse-software/url-shortener/wiki/%E2%98%81%EF%B8%8F-ShareX)
 
 ## ✌️ Contributing
