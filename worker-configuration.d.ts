@@ -4,6 +4,5 @@ interface Env {
 	LINKS: KVNamespace;
 	REVERSE_LINKS: KVNamespace;
 	LIMITS: KVNamespace;
-	DISCORD_WEBHOOK: string;
 	ASSETS: Fetcher;
 }

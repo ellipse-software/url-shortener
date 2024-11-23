@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -34,14 +33,6 @@ export function CreateForm() {
     const timeA = new Date();
 
     if (values.link.startsWith(window.location.href)) {
-      try {
-        await navigator.clipboard.writeText(values.link);
-      } catch (error) {
-        toast.error("Failed to copy link to clipboard");
-      }
-      form.setValue("link", values.link);
-      form.setFocus("link");
-
       toast.info(`Looks like you tried to shorten a shortened link!`, {});
       setLoading(false);
       return;
@@ -62,17 +53,22 @@ export function CreateForm() {
 
       const timeTaken = new Date().getTime() - timeA.getTime();
 
+      form.setValue("link", fullLink);
+      form.setFocus("link");
+
       try {
         await navigator.clipboard.writeText(fullLink);
         toast.success(`Link copied to clipboard in ${timeTaken}ms`, {});
       } catch (error) {
-        toast.warning("We couldn't copy the link to your clipboard.");
+        toast.warning("Link created in ${timeTaken}ms", {
+          description:
+            "We couldn't copy it to your clipboard, so you will have to manually do it.",
+        });
+        console.error(error);
       }
-
-      form.setValue("link", fullLink);
-      form.setFocus("link");
     } catch (error) {
       toast.error("Failed to create link. Are you rate limited?");
+      console.error(error);
     }
 
     setLoading(false);
@@ -92,6 +88,7 @@ export function CreateForm() {
               <FormControl className="w-full">
                 <Input
                   className="w-full"
+                  id="link-akO3fj"
                   placeholder="https://ellipse.software"
                   {...field}
                 />

@@ -63,15 +63,7 @@ After creating each namespace, replace the `ID` in your new `wrangler.toml` file
 
 ## 🚀 Deployment
 
-Run these three commands to build and deploy the Worker:
-
-```
-bun run build:worker
-```
-
-```
-bun run types
-```
+Once installed, you can deploy the Worker using the following command:
 
 ```
 bun run deploy:worker

@@ -1,4 +1,4 @@
-// Runtime types generated with workerd@1.20241022.0 2024-09-26 nodejs_compat
+// Runtime types generated with workerd@1.20241106.1 2024-09-26 nodejs_compat
 /*! *****************************************************************************
 Copyright (c) Cloudflare. All rights reserved.
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -2347,7 +2347,7 @@ declare abstract class SqlStorageCursor<T extends Record<string, SqlStorageValue
     toArray(): T[];
     one(): T;
     raw<U extends SqlStorageValue[]>(): IterableIterator<U>;
-    get columnNames(): string[];
+    columnNames: string[];
     get rowsRead(): number;
     get rowsWritten(): number;
     [Symbol.iterator](): IterableIterator<T>;
@@ -4416,7 +4416,7 @@ interface VectorizeIndexDetails {
  */
 interface VectorizeIndexInfo {
     /** The number of records containing vectors within the index. */
-    vectorsCount: number;
+    vectorCount: number;
     /** Number of dimensions the index has been configured for. */
     dimensions: number;
     /** ISO 8601 datetime of the last processed mutation on in the index. All changes before this mutation will be reflected in the index state. */
@@ -4534,6 +4534,13 @@ declare abstract class Vectorize {
      * @returns A promise that resolves with matched and scored vectors.
      */
     public query(vector: VectorFloatArray | number[], options?: VectorizeQueryOptions): Promise<VectorizeMatches>;
+    /**
+     * Use the provided vector-id to perform a similarity search across the index.
+     * @param vectorId Id for a vector in the index against which the index should be queried.
+     * @param options Configuration options to massage the returned data.
+     * @returns A promise that resolves with matched and scored vectors.
+     */
+    public queryById(vectorId: string, options?: VectorizeQueryOptions): Promise<VectorizeMatches>;
     /**
      * Insert a list of vectors into the index dataset. If a provided id exists, an error will be thrown.
      * @param vectors List of vectors that will be inserted.
