@@ -19,100 +19,11 @@ standard.
 
 - 🧪 **Rate limiting**: Rate limiting, built in.
 
-## 🧪 Install
-
-1. Clone the latest version of the repository:
-
-```
-git clone https://github.com/ellipse-software/url-shortener.git
-```
-
-2. Install the dependencies using your favorite package manager:
-
-```
-npm/yarn/pnpm/bun install
-```
-
-3. Install and login to the CLI tool `wrangler`. if you haven't already:
-
-```
-wrangler login
-```
-
-4. Create a `wrangler.toml` file by copying the `example.wrangler.toml` file:
-
-```
-cp example.wrangler.toml wrangler.toml
-```
-
-5. Create three KV namespaces using the following commands:
-
-```
-wrangler kv namespace create LINKS
-```
-
-```
-wrangler kv namespace create REVERSE_LINKS
-```
-
-```
-wrangler kv namespace create LIMITS
-```
-
-After creating each namespace, replace the `ID` in your new `wrangler.toml` file with the newly generated `ID` after running each command. If you plan to change the namespace names, make sure to update the code accordingly.
-
-## 🚀 Deployment
-
-Once installed, you can deploy the Worker using the following command:
-
-```
-bun run deploy
-```
-
-## ⚙️ Configuration
-
-If you would like to enable Discord Webhook Notifications, you can add the `DISCORD_WEBHOOK` secret to your Worker with the following command:
-
-```
-wrangler secret put DISCORD_WEBHOOK
-```
-
-After this, and redeploying, you will receive notifications on your Discord webhook when a link is requested.
-
-**Note:** If there is an error in your configuration, your Worker may purposely error.
-
-## 🔌 API and ShareX Integration
-
-You can directly create a link using the API programmatically, or to use ShareX as a link shortener.
-
-### API
-
-`POST /create?link=<link>`
-
-This will return the following JSON object:
-
-```
-{
-  link: string
-}
-```
-
-**Note:** `link` will return the key of the link. Therefore, to use it you will need to do something like `your.domain.com/<link>`.
-
-### ShareX
-
-To use ShareX as a link shortener, import the configuration from the following URL:
-
-```
-https://raw.githubusercontent.com/ellipse-software/url-shortener/refs/heads/main/sharex.sxcu
-```
-
-<div>
-<img alt="Step 1" src="https://direct.uploads.gg/mUbLvWvWV" width="25%">
-<img alt="Step 2" src="https://direct.uploads.gg/i2hL5a6DS" width="25%">
-</div>
-
-**Note:** Make sure you change `your.domain.com` with your actual domain.
+- [🧪 Installation](https://github.com/ellipse-software/url-shortener/wiki/%F0%9F%A7%AA-Installation)
+- [🚀 Deployment](https://github.com/ellipse-software/url-shortener/wiki/%F0%9F%9A%80-Deployment)
+- [🤖 Discord Webhook Integration](https://github.com/ellipse-software/url-shortener/wiki/%F0%9F%A4%96-Discord-Webhook-Integration)
+- [🔗 API](https://github.com/ellipse-software/url-shortener/wiki/%F0%9F%94%8C-API-and-ShareX-Integration)
+- [☁️ ShareX](https://github.com/ellipse-software/url-shortener/wiki/%E2%98%81%EF%B8%8F-ShareX)
 
 ## ✌️ Contributing
 
