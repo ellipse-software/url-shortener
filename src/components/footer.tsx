@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Version } from "@/components/version";
+import pConfig from "@/../package.json";
 
 export function Footer() {
   return (
@@ -22,13 +24,16 @@ export function Footer() {
         </Link>
         .
       </p>
-      <Link
-        target="_blank"
-        className="text-foreground text-xs hover:underline underline-offset-2"
-        href="https://github.com/ellipse-software/url-shortener"
-      >
-        View Source
-      </Link>
+      <div className="flex flex-row space-x-4 items-center justify-center">
+        <Link
+          target="_blank"
+          className="text-foreground text-xs hover:underline underline-offset-2"
+          href="https://github.com/ellipse-software/url-shortener"
+        >
+          View Source
+        </Link>
+        <Version currentVersion={pConfig.version} />
+      </div>
     </div>
   );
 }
