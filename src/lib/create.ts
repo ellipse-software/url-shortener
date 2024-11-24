@@ -9,6 +9,8 @@ export async function create(
   rayId: string,
   length = 5
 ) {
+  const timeA = Date.now();
+
   const cloudflareContext: any = await getCloudflareContext();
 
   const linkKeyValueStore: KVNamespace = cloudflareContext.env.LINKS;
@@ -47,7 +49,7 @@ export async function create(
           inline: true,
         },
       ],
-      ``,
+      `⏱️ ${Date.now() - timeA}ms`,
       16769859
     );
 
@@ -83,7 +85,7 @@ export async function create(
         inline: true,
       },
     ],
-    ``
+    `⏱️ ${Date.now() - timeA}ms`
   );
 
   return {
