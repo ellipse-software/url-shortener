@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+const noto = Noto_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "An open source link shortener.",
@@ -39,7 +39,7 @@ export default function RootLayout({
       <body
         className={cn(
           "cursor-default selection:bg-[#2266EF]/70 selection:text-foreground/70  text-foreground",
-          inter.className
+          noto.className
         )}
       >
         {children}
