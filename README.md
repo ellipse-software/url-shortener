@@ -5,7 +5,7 @@
 A url shortener that respects your privacy and deployed on your own infrastructure. Built on Cloudflare KV and Workers. Serverlessly deployed. Privacy as
 standard.
 
-**🚧 DEMO:** [url.ellipse.software](https://url.ellipse.software)
+**🚧 DEMO:** [u.els.re](https://u.els.re)
 
 ## 🔥 Features
 
