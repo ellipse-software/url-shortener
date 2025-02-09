@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "https://storage.ellipse.software/url.png",
+        url: "https://content.ellipse.software/url.png",
         width: 1699,
         height: 465,
       },
